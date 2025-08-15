@@ -1,5 +1,7 @@
 package kata.diamond;
 import net.jqwik.api.*;
+import org.junit.jupiter.api.Assertions;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +17,17 @@ class DiamondPrinterPropertyTest {
                 .toList();
 
         assertEquals(diamond, reversed);
+    }
+
+    @Property
+    void diamondLinesAreHorizontallySymmetric(@ForAll("capitalLetters") char letter) {
+        DiamondPrinter printer = new DiamondPrinter();
+        List<String> diamond = printer.printDiamond(letter);
+
+        for (String line : diamond) {
+            String reversed = new StringBuilder(line).reverse().toString();
+            Assertions.assertEquals(line, reversed);
+        }
     }
 
     @Provide
