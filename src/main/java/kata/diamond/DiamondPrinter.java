@@ -8,26 +8,20 @@ public class DiamondPrinter {
         if (letter < 'A' || letter > 'Z') {
             throw new IllegalArgumentException("Input must be an uppercase letter A–Z.");
         }
-        if (letter == 'A') return List.of("A");
-        if (letter == 'B') return List.of(" A ", "B B", " A ");
-        if (letter >= 'C') {
-            int maxIndex = letter - 'A';
-            List<String> lines = new ArrayList<>();
+        int maxIndex = letter - 'A';
+        List<String> lines = new ArrayList<>();
 
-            // top half
-            for (int i = 0; i <= maxIndex; i++) {
-                lines.add(buildLine(i, maxIndex));
-            }
-
-            // bottom half
-            for (int i = maxIndex - 1; i >= 0; i--) {
-                lines.add(buildLine(i, maxIndex));
-            }
-
-            return lines;
+        // top half
+        for (int i = 0; i <= maxIndex; i++) {
+            lines.add(buildLine(i, maxIndex));
         }
 
-        return List.of();
+        // bottom half
+        for (int i = maxIndex - 1; i >= 0; i--) {
+            lines.add(buildLine(i, maxIndex));
+        }
+
+        return lines;
     }
 
     /**
