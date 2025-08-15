@@ -57,4 +57,11 @@ class DiamondPrinterTest {
         assertEquals("                         A                         ", result.get(50));
     }
 
+    @Test
+    void throwsOnInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> new DiamondPrinter().printDiamond('1'));
+        assertThrows(IllegalArgumentException.class, () -> new DiamondPrinter().printDiamond('a'));
+        assertThrows(IllegalArgumentException.class, () -> new DiamondPrinter().printDiamond('{'));
+    }
+
 }

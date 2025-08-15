@@ -5,6 +5,9 @@ import java.util.List;
 
 public class DiamondPrinter {
     public List<String> printDiamond(char letter) {
+        if (letter < 'A' || letter > 'Z') {
+            throw new IllegalArgumentException("Input must be an uppercase letter A–Z.");
+        }
         if (letter == 'A') return List.of("A");
         if (letter == 'B') return List.of(" A ", "B B", " A ");
         if (letter >= 'C') {
