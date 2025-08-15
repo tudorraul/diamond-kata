@@ -15,4 +15,14 @@ class DiamondPrinterTest {
         assertEquals(expected, printer.printDiamond('A'));
     }
 
+    @Test
+    void printsDiamondWithB() {
+        var printer = new DiamondPrinter();
+        var expected = List.of(
+                " A ",
+                "B B",
+                " A "
+        );
+        assertEquals(expected, printer.printDiamond('B'));
+    }
 }
